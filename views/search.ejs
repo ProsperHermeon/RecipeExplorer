@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+
+<h2 class="section-title">
+    <% if (resultCount > 0) { %>
+        Found <%= resultCount %> result<%= resultCount !== 1 ? 's' : '' %> for "<%= query %>"
+    <% } else { %>
+        No results found for "<%= query %>"
+    <% } %>
+</h2>
+
+<% if (error) { %>
+    <div class="error-message"><%= error %></div>
+<% } %>
+
+<% if (meals.length > 0) { %>
+    <div class="card-grid">
+        <% meals.forEach(function(meal) { %>
+            <a href="/recipe/<%= meal.idMeal %>" class="card">
+                <img src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>" class="card-img">
+                <div class="card-body">
+                    <h3><%= meal.strMeal %></h3>
+                    <% if (meal.strCategory) { %>
+                        <p class="card-meta"><%= meal.strCategory %> | <%= meal.strArea %></p>
+                    <% } %>
+                    <span class="card-link">View Recipe →</span>
+                </div>
+            </a>
+        <% }); %>
+    </div>
+<% } else if (!error) { %>
+    <div class="empty-state">
+        <p>Try searching for something else, like "chicken", "pasta", or "cake".</p>
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+<% } %>
+
+<%- include('partials/footer') %>

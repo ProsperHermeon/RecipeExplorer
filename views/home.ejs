@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+    <h1>Welcome to Recipe Explorer</h1>
+    <p>Discover delicious recipes from around the world. Browse categories or search by name.</p>
+</section>
+
+<% if (error) { %>
+    <div class="error-message"><%= error %></div>
+<% } %>
+
+<h2 class="section-title">Browse Categories</h2>
+<div class="card-grid">
+    <% categories.forEach(function(cat) { %>
+        <a href="/category/<%= cat.strCategory %>" class="card">
+            <img src="<%= cat.strCategoryThumb %>" alt="<%= cat.strCategory %>" class="card-img">
+            <div class="card-body">
+                <h3><%= cat.strCategory %></h3>
+                <p class="card-desc"><%= cat.strCategoryDescription ? cat.strCategoryDescription.substring(0, 80) + '...' : '' %></p>
+            </div>
+        </a>
+    <% }); %>
+</div>
+
+<%- include('partials/footer') %>

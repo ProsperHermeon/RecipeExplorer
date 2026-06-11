@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+
+<% if (error) { %>
+    <div class="error-message"><%= error %></div>
+    <a href="/" class="btn">Back to Home</a>
+<% } else if (meal) { %>
+    <div class="recipe-header">
+        <img src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>" class="recipe-img">
+        <div class="recipe-info">
+            <h1><%= meal.strMeal %></h1>
+            <p class="recipe-meta">
+                <span class="badge"><%= meal.strCategory %></span>
+                <span class="badge"><%= meal.strArea %></span>
+            </p>
+            <% if (meal.strTags) { %>
+                <p class="recipe-tags">Tags: <%= meal.strTags %></p>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="recipe-content">
+        <div class="recipe-ingredients">
+            <h2>Ingredients</h2>
+            <ul>
+                <% ingredients.forEach(function(item) { %>
+                    <li><strong><%= item.measure %></strong> <%= item.ingredient %></li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="recipe-instructions">
+            <h2>Instructions</h2>
+            <% steps.forEach(function(step, index) { %>
+                <p class="step"><span class="step-num"><%= index + 1 %>.</span> <%= step %></p>
+            <% }); %>
+        </div>
+    </div>
+
+    <% if (meal.strYoutube) { %>
+        <div class="recipe-video">
+            <h2>Video Tutorial</h2>
+            <a href="<%= meal.strYoutube %>" target="_blank" class="btn">Watch on YouTube</a>
+        </div>
+    <% } %>
+
+    <a href="/" class="btn back-btn">← Back to Home</a>
+<% } %>
+
+<%- include('partials/footer') %>
