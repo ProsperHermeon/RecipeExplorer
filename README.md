@@ -6,7 +6,7 @@ To start the test server, run `npm install` followed by `node server.js` from th
 
 My purpose for building this was to learn how server-side web frameworks work, specifically how Express handles routing, how EJS templates generate dynamic HTML, and how to integrate a third-party API into a web application. This project builds directly on the JavaScript and Node.js fundamentals I learned in Module 1.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.loom.com/share/5755f3c7be2347a69aa29de6b5c4b839)
 
 # Web Pages
 
